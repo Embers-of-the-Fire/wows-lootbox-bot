@@ -1,0 +1,15 @@
+[package]
+name = "wows-box-rand"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rand = "0.8.5"
+wows-box = { version = "0.1.0", path = "../wows-box" }
+
+[dev-dependencies]
+anyhow = { workspace = true }
+bson = { workspace = true }
+dotenvy = { workspace = true }
+mongodb = { workspace = true }
+tokio = { workspace = true }

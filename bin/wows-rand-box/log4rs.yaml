@@ -1,0 +1,117 @@
+refresh_rate: 30 seconds
+
+appenders:
+  stdout:
+    kind: console
+
+  bot:
+    kind: rolling_file
+    path: "./logs/bot/bot/bot.log"
+    policy:
+      kind: compound
+      trigger:
+        kind: size
+        limit: 10mb
+      roller:
+        kind: fixed_window
+        base: 1
+        count: 5
+        pattern: "./logs/bot/bot/bot.{}.log.gz"
+    encoder:
+      kind: pattern
+      pattern: "{highlight([{level}])}[{file}:{line}]<{module}>: {message}{n}"
+
+  frontend:
+    kind: rolling_file
+    path: "./logs/bot/frontend/frontend.log"
+    policy:
+      kind: compound
+      trigger:
+        kind: size
+        limit: 10mb
+      roller:
+        kind: fixed_window
+        base: 1
+        count: 5
+        pattern: "./logs/bot/frontend/frontend.{}.log.gz"
+    encoder:
+      kind: pattern
+      pattern: "{highlight([{level}])}[{file}:{line}]<{module}>: {message}{n}"
+
+  render:
+    kind: rolling_file
+    path: "./logs/crates/render/render.log"
+    policy:
+      kind: compound
+      trigger:
+        kind: size
+        limit: 10mb
+      roller:
+        kind: fixed_window
+        base: 1
+        count: 5
+        pattern: "./logs/crates/render/render.{}.log.gz"
+    encoder:
+      kind: pattern
+      pattern: "{highlight([{level}])}[{file}:{line}]<{module}>: {message}{n}"
+
+  headless_chrome:
+    kind: rolling_file
+    path: "./logs/crates/headless_chrome/headless_chrome.log"
+    policy:
+      kind: compound
+      trigger:
+        kind: size
+        limit: 10mb
+      roller:
+        kind: fixed_window
+        base: 1
+        count: 5
+        pattern: "./logs/crates/headless_chrome/headless_chrome.{}.log.gz"
+    encoder:
+      kind: pattern
+      pattern: "{highlight([{level}])}[{file}:{line}]<{module}>: {message}{n}"
+
+  bot-debug:
+    kind: rolling_file
+    path: "./logs/bot-dbg/bot/bot.log"
+    policy:
+      kind: compound
+      trigger:
+        kind: size
+        limit: 10mb
+      roller:
+        kind: fixed_window
+        base: 1
+        count: 5
+        pattern: "./logs/bot-dbg/bot/bot.{}.log.gz"
+    encoder:
+      kind: pattern
+      pattern: "{highlight([{level}])}[{file}:{line}]<{module}>: {message}{n}"
+
+root:
+  level: info
+  appenders:
+    - stdout
+
+loggers:
+  wows_rand_box:
+    level: info
+    appenders:
+      - bot
+    additive: true
+  frontend:
+    level: info
+    appenders:
+      - frontend
+    additive: true
+  crates::wows_box_render:
+    level: info
+    appenders:
+      - render
+    additive: true
+  headless_chrome:
+    level: info
+    appenders:
+      - headless_chrome
+    additive: true

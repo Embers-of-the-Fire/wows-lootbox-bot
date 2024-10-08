@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "python-bot"
+version = "0.1.0"
+authors = ["Embers-of-the-Fire <stellarishs@163.com>"]
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+description = "wows-lootbox-bot"
+package-mode = true
+packages = [{ include = "./lootbox" }]
+
+[tool.nonebot]
+adapters = [
+    { name = "OneBot V11", module_name = "nonebot.adapters.onebot.v11" },
+    { name = "Discord", module_name = "nonebot.adapters.discord" },
+    {name = "Console", module_name = "nonebot.adapters.console"},
+]
+plugins = []
+plugin_dirs = []
+builtin_plugins = []
+
+[tool.poetry.dependencies]
+python = "^3.12"
+nonebot-adapter-onebot = "^2.4.4"
+nonebot-adapter-discord = {git = "https://github.com/nonebot/adapter-discord.git", rev = "master"}
+nonebot2 = { extras = ["fastapi", "websockets", "httpx"], version = "^2.3.3" }
+monad-std = "^0.9.0"
+requests = "^2.32.3"
+aiohttp = "^3.10.5"
+nonebot-adapter-console = "^0.6.0"
+
+[tool.poetry.group.dev.dependencies]
+nb-cli = "^1.4.1"
+ruff = "^0.6.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MULTI RAND</title>
+</head>
+<script>
+    window.onload = function () {
+        let el = document.createElement('div');
+        el.id = "loaded";
+        let loading = document.getElementById('loading');
+        loading.appendChild(el);
+    };
+</script>
+<style>
+    body {
+        font-family: Arial;
+    }
+
+    div#app {
+        display: flex;
+        flex-direction: column;
+        width: min-content;
+        background: url('{{ env("ASSET_FOLDER") }}/bg.jpg') no-repeat center center;
+        background-size: 100% 100%;
+        color: white;
+        align-items: center;
+    }
+
+    table#list {
+        table-layout: auto;
+        width: 0;
+        border-collapse: collapse;
+
+        caption {
+            margin: 15px 0px 0px;
+
+            div#title {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 20px;
+
+                img {
+                    height: 80px;
+                }
+
+                span#text-title {
+                    font-size: xx-large;
+                    font-weight: bold;
+                    margin-left: 10px;
+                }
+
+                span#times {
+                    font-size: x-large;
+                    font-weight: bold;
+                    margin-top: 5px;
+                }
+            }
+        }
+
+        tr.reward {
+            img {
+                height: 60px;
+                padding: 0px;
+                margin: 4px;
+                align-self: self-end;
+            }
+
+            span.text,
+            span.guarantee {
+                margin-left: 10px;
+            }
+
+            span.amount {
+                margin-left: 10px;
+                font-weight: bold;
+            }
+
+            td {
+                padding: 0px 5px;
+
+                div.icons {
+                    display: flex;
+                    flex-direction: row-reverse;
+                }
+            }
+
+            td:first-child {
+                padding-left: 20px;
+            }
+
+            td:last-child {
+                padding-right: 20px;
+            }
+        }
+    }
+
+    .hr-double-arrow {
+        color: #d0d0d5;
+        border: double;
+        border-width: 3px 5px;
+        border-color: #d0d0d5 transparent;
+        height: 1px;
+        overflow: visible;
+        margin-left: 40px;
+        margin-right: 40px;
+        position: relative;
+    }
+
+    .hr-double-arrow:before,
+    .hr-double-arrow:after {
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-width: 0 3px 3px 0;
+        border-style: double;
+        top: -3px;
+        background: radial-gradient(2px at 1px 1px, currentColor 2px, transparent 0) no-repeat;
+    }
+
+    .hr-double-arrow:before {
+        transform: rotate(-45deg);
+        left: -20px;
+    }
+
+    .hr-double-arrow:after {
+        transform: rotate(135deg);
+        right: -20px;
+    }
+</style>
+
+<body>
+    <div id="loading"></div>
+    <div id="app">
+        <table id="list">
+            <caption style="width: 100%;">
+                <div id="title">
+                    <img src="{{ box_icon }}" />
+                    <span>
+                        <span id="text-title">{{ box_title }}</span><br />
+                        <span id="times">× {{ times }}</span>
+                    </span>
+                </div>
+                <hr class="hr-double-arrow" />
+            </caption>
+            {% for chunk in rewards | chunks(3) %}
+            <tr class="reward">
+                {% for reward in chunk %}
+                <td nowrap>
+                    <div class="icons">
+                        {% for icon in reward.icons %}
+                        <img src="{{ icon }}" />
+                        {% endfor %}
+                    </div>
+                </td>
+                <td nowrap>
+                    <span class="text">{{ reward.text }}</span>
+                    <span class="amount">× {{ reward.amount }}</span>
+                    {% if reward.is_guaranteed %}
+                    <span class="guarantee">{{ guarantee_text }}</span>
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            <tr style="height: 20px;"></tr>
+        </table>
+    </div>
+</body>
+
+</html>

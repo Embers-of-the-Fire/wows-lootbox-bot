@@ -1,0 +1,16 @@
+[package]
+name = "wows-box-fetch"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = { workspace = true }
+log = { workspace = true }
+reqwest = { workspace = true }
+serde = { workspace = true }
+serde-aux = { workspace = true }
+serde_json = { workspace = true }
+wows-box = { version = "0.1.0", path = "../wows-box" }
+
+[dev-dependencies]
+tokio = { workspace = true }

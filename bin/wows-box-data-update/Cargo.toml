@@ -1,0 +1,17 @@
+[package]
+name = "wows-box-data-update"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+wows-box = { version = "0.1.0", path = "../../crates/wows-box" }
+wows-box-fetch = { version = "0.1.0", path = "../../crates/wows-box-fetch" }
+
+anyhow = { workspace = true }
+bson = { workspace = true }
+dotenvy = { workspace = true }
+env_logger = { workspace = true }
+log = { workspace = true }
+mongodb = { workspace = true }
+serde = { workspace = true }
+tokio = { workspace = true }

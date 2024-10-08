@@ -1,0 +1,26 @@
+[package]
+name = "wows-box-render"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+wows-box = { version = "0.1.0", path = "../wows-box" }
+wows-box-rand = { version = "0.1.0", path = "../wows-box-rand" }
+
+anyhow = { workspace = true }
+bson = { workspace = true }
+headless_chrome = { workspace = true }
+itertools = { workspace = true }
+lazy_static = { workspace = true }
+log = { workspace = true }
+minijinja = { workspace = true }
+mongodb = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+urlencoding = { workspace = true }
+uuid = { workspace = true }
+rand = { workspace = true }
+
+[dev-dependencies]
+dotenvy = { workspace = true }
+tokio = { workspace = true }

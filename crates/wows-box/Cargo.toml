@@ -1,0 +1,9 @@
+[package]
+name = "wows-box"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bson = { workspace = true }
+serde = { workspace = true }
+serde-aux = { workspace = true }

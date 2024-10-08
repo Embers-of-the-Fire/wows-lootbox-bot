@@ -1,0 +1,43 @@
+# vim
+
+*.un~
+*~
+
+# rust & cargo
+
+/target
+
+# bot binary object
+
+/bot-bin
+
+# test output
+
+*.output.*
+
+# admin secret
+
+dbadmin
+
+# local env
+
+.env
+.env.prod
+
+# local cache and log
+
+/**/cache
+/**/logs
+
+# local keys
+
+/bin/bot-bin/qr-*.png
+/bin/bot-bin/*.exe
+/bin/bot-bin/*.zip
+/bin/bot-bin/*.db
+/bin/bot-bin/device.json
+/bin/bot-bin/keystore.json
+
+# exes
+
+*.exe

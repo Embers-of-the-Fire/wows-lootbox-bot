@@ -1,0 +1,32 @@
+[package]
+name = "wows-rand-box"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# frontend = { version = "0.1.0", path = "../../crates/frontend" }
+utils = { version = "0.1.0", path = "../../utils" }
+
+wows-box = { version = "0.1.0", path = "../../crates/wows-box" }
+wows-box-render = { version = "0.1.0", path = "../../crates/wows-box-render" }
+
+anyhow = { workspace = true }
+futures = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+axum = { workspace = true }
+tower-http = { workspace = true }
+serde = { workspace = true }
+log4rs = { workspace = true }
+log = { workspace = true }
+reqwest = { workspace = true }
+mongodb = { workspace = true }
+bson = { workspace = true }
+dotenvy = { workspace = true }
+itertools = { workspace = true }
+strsim = { workspace = true }
+ordered-float = { workspace = true }
+once_cell = { workspace = true }
+async_once = { workspace = true }
+lazy_static = { workspace = true }
+axum-extra = { workspace = true }
